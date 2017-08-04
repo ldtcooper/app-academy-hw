@@ -1,3 +1,4 @@
+# Map
 class Map
   def initialize
     @map = []
