@@ -8,7 +8,7 @@ class Stack
   end
 
   def remove
-    # removes one element from the stack
+    @stack.pop
   end
 
   def show
