@@ -12,6 +12,6 @@ class Stack
   end
 
   def show
-    # return a copy of the stack
+    @stack
   end
 end
