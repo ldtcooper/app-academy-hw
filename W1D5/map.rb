@@ -14,7 +14,7 @@ class Map
   end
 
   def remove(k)
-
+    @map = @map.reject { |ent| ent.first == k }
   end
 
   def show
