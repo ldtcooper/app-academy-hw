@@ -4,7 +4,7 @@ class Stack
   end
 
   def add(el)
-    # adds an element to the stack
+    @stack.push(el)
   end
 
   def remove
