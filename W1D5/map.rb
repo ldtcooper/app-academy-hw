@@ -4,7 +4,7 @@ class Map
   end
 
   def assign(k, v)
-
+    @map << [k, v] if @map.none? { |entry| entry.first == k }
   end
 
   def lookup(k)
@@ -16,6 +16,6 @@ class Map
   end
 
   def show
-    
+
   end
 end
