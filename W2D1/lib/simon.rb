@@ -1,5 +1,12 @@
+require "byebug"
 class Simon
-  COLORS = %w(red blue green yellow)
+
+  def self.game
+    simon = Simon.new
+    simon.play
+  end
+
+  COLORS = %w(red blue green yellow).freeze
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -29,10 +36,13 @@ class Simon
   end
 
   def show_sequence
+    system "clear"
     add_random_color
-    @seq.each { |color| puts color }
-    # sleep(@sequence_length * 2)
-    # system "clear"
+    @seq.each_with_index do |color, ind|
+      puts "#{ind + 1}: #{color}"
+      sleep(1)
+      system "clear"
+    end
   end
 
   def require_sequence
@@ -40,13 +50,13 @@ class Simon
     until @guess.length == @sequence_length
       el = prompt
       case el
-      when el =~ /\A[Rr]/
+      when "red"
         @guess << "red"
-      when el =~ /\A[Bb]/
+      when "blue"
         @guess << "blue"
-      when el =~ /\A[Gg]/
+      when "green"
         @guess << "green"
-      when el =~ /\A[Yy]/
+      when "yellow"
         @guess << "yellow"
       else
         puts "Sorry, what?"
@@ -73,11 +83,11 @@ class Simon
   def prompt
     puts "What is the next color in the sequence?"
     puts "(Red Blue Yellow Green)"
-    el = gets.chomp
+    gets.chomp
   end
 
   def over?
-    @guess == @seq
+    @guess != @seq
   end
 
   def round_success_message
@@ -92,3 +102,5 @@ class Simon
     gets.chomp
   end
 end
+
+Simon::game
