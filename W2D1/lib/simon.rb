@@ -44,6 +44,6 @@ class Simon
   private
 
   def random_color
-    COLORS[rand(3)]
+    COLORS[rand(4)]
   end
 end
