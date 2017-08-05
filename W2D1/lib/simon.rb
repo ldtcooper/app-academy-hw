@@ -18,7 +18,10 @@ class Simon
   end
 
   def show_sequence
-
+    self.add_random_color
+    @seq.each { |color| puts color }
+    # sleep(@sequence_length * 2)
+    # system "clear"
   end
 
   def require_sequence
@@ -27,6 +30,7 @@ class Simon
 
   def add_random_color
     @seq << random_color
+    @sequence_length = @seq.length
   end
 
   def round_success_message
