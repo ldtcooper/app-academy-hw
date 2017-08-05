@@ -26,7 +26,7 @@ class Simon
   end
 
   def add_random_color
-
+    @seq << random_color
   end
 
   def round_success_message
@@ -39,5 +39,11 @@ class Simon
 
   def reset_game
 
+  end
+
+  private
+
+  def random_color
+    COLORS[rand(3)]
   end
 end
