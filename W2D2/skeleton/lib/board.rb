@@ -1,3 +1,4 @@
+require "byebug"
 class Board
   attr_accessor :cups
 
@@ -28,11 +29,14 @@ class Board
     @cups[start_pos] = []
     current_cup = start_pos
     until stones_to_distribute.empty?
-      if current_cup < 14
-        current_cup += 1
-      else
-        current_cup = 0
+      if @name1 == current_player_name && current_cup == 12
+        current_cup = (current_cup + 1) % 14
+        next
+      elsif @name2 == current_player_name && current_cup == 5
+        current_cup = (current_cup + 1) % 14
+        next
       end
+      current_cup = (current_cup + 1) % 14
       @cups[current_cup] << stones_to_distribute.pop
     end
     render
@@ -40,7 +44,13 @@ class Board
   end
 
   def next_turn(ending_cup_idx)
-    # helper method to determine what #make_move returns
+    if @cups[ending_cup_idx].empty?
+      :switch
+    elsif ending_cup_idx == 6 || ending_cup_idx == 13
+      :prompt
+    else
+      ending_cup_idx
+    end
   end
 
   def render
@@ -52,9 +62,21 @@ class Board
   end
 
   def one_side_empty?
+    if (0..5).all? { |el| @cups[el].empty? } || (7..12).all? { |el| @cups[el].empty? }
+      true
+    else
+      false
+    end
   end
 
   def winner
+    if @cups[6].length == @cups[13].length
+      :draw
+    elsif @cups[6].length > @cups[13].length
+      @name1
+    else
+      @name2
+    end
   end
 end
 
