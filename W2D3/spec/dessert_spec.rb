@@ -35,7 +35,20 @@ describe Dessert do
   end
 
   describe "#mix!" do
-    it "shuffles the ingredient array"
+    context "shuffles the ingredient array" do
+      before(:each) do
+        brownie.add_ingredient("Chocolate")
+        brownie.add_ingredient("Eggs")
+        brownie.add_ingredient("Flour")
+        brownie.mix!
+      end
+      it "retains length" do
+        expect(brownie.ingredients.length).to eq(3)
+      end
+      it "does not return the same ordering" do
+        expect(brownie.ingredients).to_not be(["Chocolate", "Eggs", "Flour"])
+      end
+    end
   end
 
   describe "#eat" do
