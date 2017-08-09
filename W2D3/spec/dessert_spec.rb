@@ -7,9 +7,12 @@ Instructions: implement all of the pending specs (the `it` statements without bl
 
 describe Dessert do
   let(:chef) { double("chef") }
+  subject(:dessert) { Dessert.new("Brownie", 10, chef) }
 
   describe "#initialize" do
-    it "sets a type"
+    it "sets a type" do
+      expect(dessert.type).to eq("Brownie")
+    end
 
     it "sets a quantity"
 
