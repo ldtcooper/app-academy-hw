@@ -9,8 +9,12 @@ class LRUCache
   end
 
   def add(el)
-    remove_oldest if full?
-    add_new(el)
+    if include?(el)
+      move_to_first(el)
+    elsif full?
+      remove_oldest
+      add_new(el)
+    end
   end
 
   def show
@@ -28,16 +32,19 @@ class LRUCache
   end
 
   def full?
-    @cache.length == @length
+    count == @length
   end
 
   def move_to_first(el)
-
+    ind = @cache.index(el)
+    unless ind == count - 1
+      @cache = @cache[0...ind] + @cache[ind + 1..-1] + [el]
+    end
   end
 
-  def repeat?
-
-  end 
+  def include?(el)
+    @cache.include?(el)
+  end
 end
 
 # class LinkedList
