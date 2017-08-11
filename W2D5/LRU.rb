@@ -14,6 +14,8 @@ class LRUCache
     elsif full?
       remove_oldest
       add_new(el)
+    else
+      add_new(el)
     end
   end
 
@@ -74,4 +76,4 @@ johnny_cache.add(:ring_of_fire)
 johnny_cache.add("I walk the line")
 johnny_cache.add({a: 1, b: 2, c: 3})
 
-p johnny_cache.show #== [[1, 2, 3, 4], :ring_of_fire, "I walk the line", {:a=>1, :b=>2, :c=>3}]
+p johnny_cache.show == [[1, 2, 3, 4], :ring_of_fire, "I walk the line", {:a=>1, :b=>2, :c=>3}]
