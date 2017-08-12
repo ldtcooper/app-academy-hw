@@ -49,16 +49,6 @@ class LRUCache
   end
 end
 
-# class LinkedList
-#   def initialize(next_el, prev_el, obj = nil)
-#     @next_el = next_el
-#     @prev_el = prev_el
-#     @obj = obj
-#   end
-#
-#   attr_accessor :next_el, :prev_el, :obj
-# end
-
 johnny_cache = LRUCache.new(4)
 
 johnny_cache.add("I walk the line")
