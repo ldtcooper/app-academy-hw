@@ -15,7 +15,7 @@ class Play
   attr_accessor :title, :year, :playwright_id
 
   def self.all
-    data = PlayDBConnection.instance.execute("SELECT * FROM plays")
+    data = PlayDBConnection.instance.execute('SELECT * FROM plays')
     data.map { |datum| Play.new(datum) }
   end
 
@@ -27,10 +27,10 @@ class Play
   end
 
   def create
-    raise "#{self} already in database" if @id
+    raise '#{self} already in database' if @id
     PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
       INSERT INTO
-        plays (title, year, playwright_id)
+        play (title, year, playwright_id)
       VALUES
         (?, ?, ?)
     SQL
@@ -38,10 +38,10 @@ class Play
   end
 
   def update
-    raise "#{self} not in database" unless @id
+    raise '#{self} not in database' unless @id
     PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id, @id)
       UPDATE
-        plays
+        play
       SET
         title = ?, year = ?, playwright_id = ?
       WHERE
@@ -75,13 +75,16 @@ class Play
 end
 
 class Playwright
+  attr_accessor :name, :birth_year
+
   def initialize(options)
-    @name = options["name"]
-    @birth_year = options["birth_year"]
+    @id = options['id']
+    @name = options['name']
+    @birth_year = options['birth_year']
   end
 
   def self.all
-    data = PlayDBConnection.instance.execute("SElECT * FROM playwrights")
+    data = PlayDBConnection.instance.execute('SElECT * FROM playwrights')
     data.map { |el| Playwright.new(el) }
   end
 
@@ -97,10 +100,10 @@ class Playwright
   end
 
   def create
-    raise "#{self} already in database" if @id
+    raise '#{self} already in database' if @id
     PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year)
       INSERT INTO
-        plays (birth_year, name)
+        playwrights (name, birth_year)
       VALUES
         (?, ?)
     SQL
@@ -108,12 +111,21 @@ class Playwright
   end
 
   def update
-    raise "#{self} not yet in database" unless @id
+    raise '#{self} not yet in database' unless @id
     PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year, @id)
       UPDATE
         playwrights
       SET
         name = ?, birth_year = ?
+      WHERE
+        id = ?
+    SQL
+  end
+
+  #added to deal with duplicate copies of Shakespeare
+  def self.delete(id)
+    PlayDBConnection.instance.execute(<<-SQL, id)
+      DELETE FROM playwrights
       WHERE
         id = ?
     SQL
