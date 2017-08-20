@@ -1,18 +1,21 @@
 class BooksController < ApplicationController
   def index
-    # your code here
+    @books = Book.all
   end
 
   def new
-    # your code here
+
   end
 
   def create
-    # your code here
+    Book.new(book_params).save
+    redirect_to "http://localhost:3000/books"
   end
 
   def destroy
-    # your code here
+    book = Book.find(params[:id])
+    book.delete
+    redirect_to "http://localhost:3000/books"
   end
 
   private
