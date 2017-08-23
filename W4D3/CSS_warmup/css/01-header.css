@@ -10,9 +10,7 @@ body {
 
 .header {
   background: #f00;
-  border-bottom-style: solid;
-  border-bottom-color: #ccc;
-  border-bottom-width: 1px;
+  border-bottom: solid 1px #ccc;
   color: #fff;
 }
 
@@ -26,6 +24,6 @@ body {
   border-right-style: solid;
   border-width: 1px;
   border-color: #ccc;
-  width: 69%;
+  width: 900px;
   margin: auto;
 }
