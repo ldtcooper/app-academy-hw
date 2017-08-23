@@ -12,14 +12,14 @@
 .content-sidebar {
   width: 240px;
   float:left;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
 .content-main {
   width: 660px;
   float:left;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
