@@ -28,7 +28,7 @@ function sumOfNPrimes(n) {
     if (isPrime(i)) {
       primesArr.push(i);
       sum += i;
-      i += 2;
+      i += 1;
     }
   }
   return sum;
