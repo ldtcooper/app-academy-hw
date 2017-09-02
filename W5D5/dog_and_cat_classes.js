@@ -14,3 +14,5 @@ Dog.prototype.chase = function (cat) {
 
 const Markov = new Cat ();
 const Noodles = new Dog ();
+
+Noodles.chase.apply([Markov, Noodles]);
