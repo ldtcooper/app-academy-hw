@@ -121,6 +121,7 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
+  $('li').remove();
 };
 
 View.prototype.exercise3 = function () {
