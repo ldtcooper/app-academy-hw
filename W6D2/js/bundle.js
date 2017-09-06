@@ -150,6 +150,11 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
+  $("ul").on("click", event =>{
+    const $squareEl = $(event.currentTarget);
+    const elPos = $squareEl.data("date-pos")
+    alert(`${elPos}`)
+  });
 };
 
 View.prototype.exercise6 = function () {
@@ -160,6 +165,9 @@ View.prototype.exercise6 = function () {
   //hint: use window._randomColorString() (defined at top) to get a random color!
 
   //your code here!
+  $('li').each(function(el) {
+    el.css("background-color", window._randomColorString());
+  });
 };
 
 View.prototype.exercise7 = function(){
