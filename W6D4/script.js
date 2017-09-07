@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // adding new photos
 
   const showFormButton = document.getElementsByClassName("photo-show-button")[0];
+  const photoForm = document.getElementsByClassName("photo-form-container")[0];
   const togglePhotoForm = function() {
     showFormButton.addEventListener("click", e => {
       e.preventDefault();
-      const hiddenForm = document.getElementsByClassName("photo-form-container")[0];
-      if (hiddenForm.classList.contains("hidden")) {
-        hiddenForm.classList.remove("hidden");
+      if (photoForm.classList.contains("hidden")) {
+        photoForm.classList.remove("hidden");
       } else {
-        hiddenForm.classList.add("hidden");
+        photoForm.classList.add("hidden");
       }
     });
   };
