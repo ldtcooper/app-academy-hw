@@ -36,15 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // adding new photos
 
   const showFormButton = document.getElementsByClassName("photo-show-button")[0];
-  const showPhotoForm = function() {
+  const togglePhotoForm = function() {
     showFormButton.addEventListener("click", e => {
       e.preventDefault();
       const hiddenForm = document.getElementsByClassName("photo-form-container")[0];
-      hiddenForm.classList.remove("hidden");
+      if (hiddenForm.classList.contains("hidden")) {
+        hiddenForm.classList.remove("hidden");
+      } else {
+        hiddenForm.classList.add("hidden");
+      }
     });
   };
 
-  showPhotoForm();
+  togglePhotoForm();
 
 
 });
