@@ -35,8 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // adding new photos
 
-  // --- your code here!
+  const showFormButton = document.getElementsByClassName("photo-show-button")[0];
+  const showPhotoForm = function() {
+    showFormButton.addEventListener("click", e => {
+      e.preventDefault();
+      const hiddenForm = document.getElementsByClassName("photo-form-container")[0];
+      hiddenForm.classList.remove("hidden");
+    });
+  };
 
+  showPhotoForm();
 
 
 });
