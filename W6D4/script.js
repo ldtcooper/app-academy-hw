@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const showFormButton = document.getElementsByClassName("photo-show-button")[0];
   const photoForm = document.getElementsByClassName("photo-form-container")[0];
+  const photoList = document.getElementsByClassName("dog-photos")[0];
+
   const togglePhotoForm = function() {
     showFormButton.addEventListener("click", e => {
       e.preventDefault();
@@ -48,7 +50,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  togglePhotoForm();
+  const addPhoto = function() {
+    photoForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const newPhoto = document.getElementsByClassName("photo-url-input")[0];
+      const imgURL = newPhoto.value;
+      newPhoto.value = "";
+      const li = document.createElement("li");
+      const img = document.createElement("img");
+      img.src = imgURL;
+      li.append(img);
+      photoList.append(li);
+    });
+  };
 
+  togglePhotoForm();
+  addPhoto();
 
 });
