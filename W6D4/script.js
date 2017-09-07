@@ -17,10 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // adding SF places as list items
+  const placeForm = document.getElementById('place-form');
+  const addPlace = function() {
+    placeForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const newPlace = document.getElementsByClassName('favorite-input')[0];
+      const placeName = newPlace.value;
+      newPlace.value = "";
+      const placesList = document.getElementById('sf-places');
+      const li = document.createElement('li');
+      li.textContent = placeName;
+      placesList.append(li);
+    });
 
-  // --- your code here!
-
-
+  };
+  addPlace();
 
   // adding new photos
 
