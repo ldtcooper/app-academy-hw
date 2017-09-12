@@ -1,10 +1,9 @@
-const selectCurrency = function selectCurrency(baseCurrency, rates) {
-  const currencyResponse = {
+const selectCurrency = (baseCurrency, rates) => {
+  return {
     type: "SWITCH_CURRENCY",
-    baseCurrency,
-    rates
+    baseCurrency: baseCurrency,
+    rates: rates
   };
-  return currencyResponse;
 };
 
 export default selectCurrency;
