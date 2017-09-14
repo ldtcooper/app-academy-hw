@@ -1,7 +1,6 @@
 import { RECEIVE_SEARCH_GIPHYS } from '../actions/giphy_actions';
 
 const GiphysReducer = (state = [], action) => {
-  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SEARCH_GIPHYS:
       return action.giphys;
@@ -9,3 +8,5 @@ const GiphysReducer = (state = [], action) => {
       return state;
   }
 };
+
+export default GiphysReducer;
